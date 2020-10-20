@@ -35,7 +35,7 @@
   },
   "scripts": {
     "start": "gulp serve",
-    "deploy": "gulp build && gsutil -m rsync -d -r dist gs://kni.sh/extra-special-modules"
+    "build": "gulp build"
   },
   "license": "Apache-2.0"
 }
