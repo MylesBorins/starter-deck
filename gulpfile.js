@@ -16,6 +16,7 @@ limitations under the License.
 
 'use strict';
 const path = require('path');
+const { rm } = require('node:fs/promises');
 
 const {
   series,
@@ -29,7 +30,6 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserify = require('gulp-bro');
 const connect = require('gulp-connect');
 const csso = require('gulp-csso');
-const del = require('del');
 const jade = require('gulp-pug-too');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
@@ -40,7 +40,7 @@ const uglify = require('gulp-uglify');
 const isDist = process.argv.indexOf('serve') === -1;
 
 async function cleanJS() {
-  await del('dist/build/build.js');
+  await rm('dist/build/build.js', { force: true });
 }
 
 function buildJS() {
@@ -56,7 +56,7 @@ function buildJS() {
 exports.js = series(cleanJS, buildJS);
 
 async function cleanHTML() {
-  await del('dist/index.html');
+  await rm('dist/index.html', { force: true });
 }
 
 function buildHTML() {
@@ -71,7 +71,7 @@ function buildHTML() {
 exports.html = series(cleanHTML, buildHTML);
 
 async function cleanCSS() {
-  await del('dist/build/build.css');
+  await rm('dist/build/build.css', { force: true });
 }
 
 function buildCSS() {
@@ -92,7 +92,7 @@ function buildCSS() {
 exports.css = series(cleanCSS, buildCSS);
 
 async function cleanImages() {
-  await del('dist/images');
+  await rm('dist/images', { recursive: true, force: true });
 }
 
 function copyImages() {
@@ -104,7 +104,7 @@ function copyImages() {
 exports.images = series(cleanImages, copyImages)
 
 async function cleanTask () {
-  await del('dist');
+  await rm('dist', { recursive: true, force: true });
 }
 exports.clean = cleanTask;
 

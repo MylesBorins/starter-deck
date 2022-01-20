@@ -15,7 +15,6 @@
     "bespoke-scale": "^1.0.0",
     "bespoke-theme-nebula": "^1.0.1",
     "bespoke-touch": "^1.0.0",
-    "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-bro": "^2.0.0",
