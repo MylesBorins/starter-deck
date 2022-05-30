@@ -36,5 +36,8 @@
     "start": "gulp serve",
     "build": "gulp build"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "overrides": {
+    "glob-parent": "^5.1.2"
+  }
 }
