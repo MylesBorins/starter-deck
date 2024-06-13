@@ -96,7 +96,7 @@ async function cleanImages() {
 }
 
 function copyImages() {
-  return src('src/images/**/*')
+  return src('src/images/**/*', {encoding: false})
     .pipe(dest('dist/images'))
     .pipe(connect.reload());
 }
@@ -110,7 +110,7 @@ exports.clean = cleanTask;
 
 function connectTask(done) {
   connect.server({
-    root: 'dist',
+    root: 'dist/',
     livereload: true
   });
   done();
